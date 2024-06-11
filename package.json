@@ -1,9 +1,10 @@
 {
   "scripts": {
-    "dev": "bun run --hot src/index.ts"
+    "dev": "bun run --hot src/app.ts"
   },
   "dependencies": {
     "hono": "^4.4.5",
+    "mongoose": "^8.4.1",
     "uuid": "^10.0.0"
   },
   "devDependencies": {

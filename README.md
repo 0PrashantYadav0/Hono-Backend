@@ -8,5 +8,14 @@ To run:
 bun run dev
 ```
 
-open http://localhost:3000
-# Hono-Backend
+Open
+```
+http://localhost:3000
+```
+
+## To run Index.js
+```json
+"scripts": {
+  "dev": "bun run --hot src/app.ts"
+  },
+```
