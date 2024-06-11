@@ -17,7 +17,7 @@ const app = new Hono();
 
 
 //CREATE video
-app.post("/addVideo", async (c : any) => {
+app.post("/addVideo", async (c) => {
   const id = uuidv4();
   const {title, description, url } = await c.req.json();
 
@@ -27,13 +27,13 @@ app.post("/addVideo", async (c : any) => {
 });
 
 //GET all video
-app.get("/getVideos", async (c : any) => {
+app.get("/getVideos", async (c) => {
   return c.json(video);
 });
 
 
 //UPDATE video
-app.put("/updateVideo/:id", async (c : any) => {
+app.put("/updateVideo/:id", async (c) => {
   const id = await c.req.param('id');
   const { title, description, url } = await c.req.json();
 
@@ -45,7 +45,7 @@ app.put("/updateVideo/:id", async (c : any) => {
 });
 
 //DELETE video
-app.delete("/removeVideo/:id", async (c :any) => {
+app.delete("/removeVideo/:id", async (c) => {
   const id = await c.req.param('id');
   const index = video.findIndex((video) => video.id === id);
   video.splice(index, 1);
@@ -53,7 +53,7 @@ app.delete("/removeVideo/:id", async (c :any) => {
 })
 
 //GET streaming videos
-app.get("/streameVideo", async (c : any) => {
+app.get("/streameVideo", async (c) => {
   return streamText(c, async (stream) => {
     for (const v of video) {
       await stream.write(JSON.stringify(v));

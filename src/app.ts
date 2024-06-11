@@ -77,11 +77,18 @@ dbConnect()
     });
 
     //stream video
-    app.get("/streamVideo", async (c) => {
+    app.get("/d/:id", async (c) => {
+      const {id} = c.req.param();
+      const document = await video.findById(id);
+
+      if(!document) return c.json({message: 'Video not found'}, 404);
+
       return streamText(c, async (stream) => {
-        const document = await video.find();
-        for (const v of document) {
-          await stream.write(JSON.stringify(v));
+        stream.onAbort(() => {
+          console.log('stream aborted');
+        })
+        for(let i = 0; i < document.description.length; i++) {
+          await stream.write(document.description[i]);
           await stream.sleep(1000);
         }
       })
