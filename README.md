@@ -1,9 +1,16 @@
-To install dependencies:
+# Hono Backend
+## How to get started : 
+### To install dependencies:
 ```sh
 bun install
 ```
 
-To run:
+### Add .env file as per given .env.example file
+```env
+MONGO URI=<your mongodb url>
+```
+
+### To run:
 ```sh
 bun run dev
 ```
